@@ -1,0 +1,367 @@
+:root {
+  --bg: #f7f5ef;
+  --panel: #ffffff;
+  --ink: #1d2430;
+  --muted: #697386;
+  --line: #d8dde8;
+  --accent: #0d746f;
+  --accent-strong: #084b48;
+  --warning: #b34d16;
+  --shadow: 0 18px 45px rgba(34, 43, 58, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(13, 116, 111, 0.1), transparent 38%),
+    var(--bg);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+.file-button {
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover,
+.file-button:hover {
+  background: var(--accent-strong);
+}
+
+.secondary {
+  background: #edf2f1;
+  color: var(--accent-strong);
+}
+
+.secondary:hover {
+  background: #dfe9e7;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.eyebrow {
+  margin: 0 0 0.2rem;
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(1.4rem, 2.6vw, 2.3rem);
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.file-button input {
+  display: none;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1.2rem;
+  width: min(1380px, 100%);
+  margin: 0 auto;
+  padding: 1.2rem clamp(1rem, 4vw, 3rem) 3rem;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-self: start;
+  position: sticky;
+  top: 6.2rem;
+}
+
+.nav-item {
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  border: 1px solid transparent;
+  font-weight: 750;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: #fff;
+  border-color: var(--line);
+  color: var(--accent-strong);
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: grid;
+  gap: 1rem;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.metric,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.metric {
+  padding: 1rem;
+}
+
+.metric span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 850;
+  color: var(--accent-strong);
+}
+
+.metric p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.panel {
+  padding: 1rem;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  font-weight: 750;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  background: #fff;
+  padding: 0.72rem 0.8rem;
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.draft {
+  min-height: 390px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.job-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.75rem;
+  background: #fbfcfd;
+}
+
+.job-card header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.job-card h3 {
+  margin-bottom: 0.15rem;
+}
+
+.job-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  height: 1.65rem;
+  padding: 0 0.55rem;
+  border-radius: 999px;
+  background: #e7f3f1;
+  color: var(--accent-strong);
+  font-size: 0.8rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.match-box {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fbfcfd;
+  min-height: 5.5rem;
+}
+
+.match-box strong {
+  color: var(--accent-strong);
+}
+
+.keyword-list {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.7rem;
+}
+
+.keyword {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.25rem 0.55rem;
+  color: var(--muted);
+  background: #fff;
+  font-size: 0.82rem;
+}
+
+.empty {
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 1rem;
+  color: var(--muted);
+  background: #fbfcfd;
+}
+
+.empty p {
+  margin-bottom: 0;
+}
+
+.danger {
+  background: #fff1ed;
+  color: var(--warning);
+}
+
+.danger:hover {
+  background: #ffe1d8;
+}
+
+@media (max-width: 860px) {
+  .topbar,
+  .app-shell,
+  .panel-header,
+  .job-card header {
+    align-items: stretch;
+  }
+
+  .topbar,
+  .panel-header,
+  .job-card header {
+    flex-direction: column;
+  }
+
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-grid,
+  .form-grid,
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+}
