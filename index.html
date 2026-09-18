@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Job Search Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Career command center</p>
+        <h1>Job Search Assistant</h1>
+      </div>
+      <div class="actions">
+        <button id="exportData" type="button">Export</button>
+        <label class="file-button">
+          Import
+          <input id="importData" type="file" accept="application/json" />
+        </label>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <aside class="sidebar">
+        <button class="nav-item active" data-view="dashboard" type="button">Dashboard</button>
+        <button class="nav-item" data-view="profile" type="button">Profile</button>
+        <button class="nav-item" data-view="jobs" type="button">Jobs</button>
+        <button class="nav-item" data-view="tailor" type="button">Tailor</button>
+        <button class="nav-item" data-view="queue" type="button">Apply Queue</button>
+      </aside>
+
+      <section class="view active" id="dashboard">
+        <div class="metric-grid">
+          <article class="metric">
+            <span id="savedJobsCount">0</span>
+            <p>Saved jobs</p>
+          </article>
+          <article class="metric">
+            <span id="queuedAppsCount">0</span>
+            <p>Ready to review</p>
+          </article>
+          <article class="metric">
+            <span id="appliedCount">0</span>
+            <p>Applied</p>
+          </article>
+          <article class="metric">
+            <span id="avgMatchScore">0%</span>
+            <p>Average match</p>
+          </article>
+        </div>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Today</h2>
+            <button class="secondary" data-jump="jobs" type="button">Add job</button>
+          </div>
+          <div id="todayList" class="stack"></div>
+        </section>
+      </section>
+
+      <section class="view" id="profile">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Your base profile</h2>
+            <button id="saveProfile" type="button">Save profile</button>
+          </div>
+          <div class="form-grid">
+            <label>
+              Target role
+              <input id="targetRole" placeholder="Senior Product Manager" />
+            </label>
+            <label>
+              Location preference
+              <input id="locationPreference" placeholder="Remote, US" />
+            </label>
+            <label>
+              Name
+              <input id="candidateName" placeholder="Your name" />
+            </label>
+            <label>
+              Email
+              <input id="candidateEmail" type="email" placeholder="you@example.com" />
+            </label>
+          </div>
+          <label>
+            Core skills
+            <textarea id="skills" placeholder="React, Node.js, product strategy, analytics"></textarea>
+          </label>
+          <label>
+            Experience bullets
+            <textarea id="experience" placeholder="Led X, improved Y by Z%, shipped A for B users"></textarea>
+          </label>
+          <label>
+            Resume summary
+            <textarea id="summary" placeholder="A concise 2-3 sentence professional summary"></textarea>
+          </label>
+        </section>
+      </section>
+
+      <section class="view" id="jobs">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Add a job</h2>
+            <button id="saveJob" type="button">Save job</button>
+          </div>
+          <div class="form-grid">
+            <label>
+              Company
+              <input id="company" placeholder="Acme" />
+            </label>
+            <label>
+              Role
+              <input id="role" placeholder="Staff Software Engineer" />
+            </label>
+            <label>
+              Apply link
+              <input id="applyLink" placeholder="https://..." />
+            </label>
+            <label>
+              Status
+              <select id="jobStatus">
+                <option>Saved</option>
+                <option>Tailored</option>
+                <option>Queued</option>
+                <option>Applied</option>
+                <option>Rejected</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Job description
+            <textarea id="jobDescription" placeholder="Paste the job description here"></textarea>
+          </label>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Saved jobs</h2>
+            <button id="clearJobForm" class="secondary" type="button">Clear form</button>
+          </div>
+          <div id="jobsList" class="stack"></div>
+        </section>
+      </section>
+
+      <section class="view" id="tailor">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Tailor resume</h2>
+            <button id="generateDraft" type="button">Generate draft</button>
+          </div>
+          <label>
+            Choose job
+            <select id="tailorJob"></select>
+          </label>
+          <div id="matchSummary" class="match-box"></div>
+        </section>
+
+        <section class="panel two-column">
+          <div>
+            <h3>Resume edits</h3>
+            <textarea id="resumeDraft" class="draft"></textarea>
+          </div>
+          <div>
+            <h3>Cover letter</h3>
+            <textarea id="coverDraft" class="draft"></textarea>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="queue">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Application queue</h2>
+            <button id="markApplied" type="button">Mark selected applied</button>
+          </div>
+          <div id="queueList" class="stack"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="emptyState">
+      <div class="empty">
+        <strong>Nothing here yet.</strong>
+        <p>Add a job or generate a draft to get moving.</p>
+      </div>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
